@@ -1,0 +1,13 @@
+const conflictLow = [
+  "Gentle",
+  "Low",
+  "Mild",
+  "Peaceful",
+  "Relaxed",
+  "Stable",
+  "Tranquil",
+  "Trivial",
+  "Unthreatening",
+  "Untroubled"
+];
+
