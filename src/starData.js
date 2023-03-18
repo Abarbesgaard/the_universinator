@@ -2,17 +2,14 @@ import { getRandom, rollDie, rollIndex } from "./utilities";
 
 const starColors = ["Yellow", "Yellow", "Yellow", "Red", "Red", "Green", "Green", "Blue"];
 
-const starShapes = ["Circle", "Circle", "Circle", "Square", "Square", "Triangle", "Triangle", "Double Circle"];
+const starShapes = {"Yellow": "Circle", "Red": "Square", "Green": "Triangle", "Blue": "Double Circle"};
 
-export function starSystemData() {
-  const starTypeIndex = rollIndex(8);
-  const color = starColors[starTypeIndex];
-  const shape = starShapes[starTypeIndex];
-  const distance = rollDie(6);
-  const d20Roll = rollDie(20);
-  const signal = d20Roll === 20 ? "Yes" : "No";
-  const newRegion = rollDie(6) >= 5 ? "Yes" : "No";
-  return { color, shape, distance, signal, newRegion };
+function color() {
+  return getRandom(starColors);
+}
+
+function shape(color) {
+  return starShapes[color];
 }
 
 const starNames1 = [
@@ -84,7 +81,7 @@ const starNames3 = [
   "&&",
 ];
 
-export function starName() {
+function name() {
   const name1 = getRandom(starNames1);
   const name2 = getRandom(starNames2);
   const name3 = getRandom(starNames3);
@@ -114,7 +111,7 @@ const systemRaces = [
   "Saluander",
 ];
 
-export function systemRace() {
+function race() {
   return getRandom(systemRaces);
 }
 
@@ -129,13 +126,13 @@ const systemEconomies = [
   "Wealthy",
 ];
 
-export function systemEconomy() {
+function economy() {
   return getRandom(systemEconomies);
 }
 
 const conflictTypes = ["Low", "Low", "Low", "Medium", "Medium", "High"];
 
-export function systemConflictType() {
+function conflictType() {
   return getRandom(conflictTypes);
 }
 
@@ -179,7 +176,7 @@ const HighConflictDescriptions = [
 ];
 
 /** @param {string} conflictType */
-export function systemConflictDescription(conflictType) {
+function conflictDescription(conflictType) {
   const ConflictTypesMap = {
     Low: LowConflictDescriptions,
     Medium: MediumConflictDescriptions,
@@ -187,4 +184,12 @@ export function systemConflictDescription(conflictType) {
   };
 
   return getRandom(ConflictTypesMap[conflictType]);
+}
+
+export function getSystem() {
+  const distance = rollDie(6);
+  const d20Roll = rollDie(20);
+  const signal = d20Roll === 20 ? "Yes" : "No";
+  const newRegion = rollDie(6) >= 5 ? "Yes" : "No";
+  return { color, shape, distance, signal, newRegion };
 }
