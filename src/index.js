@@ -5,7 +5,7 @@ import { getSystem } from "./starData";
 import { Display } from "./displays";
 
 document.addEventListener("load", () => {
-  Display.loadingScreen(null);
+  Display.loadingScreen("");
 });
 
 // @ts-ignore
@@ -26,7 +26,7 @@ NewSystem, NewStarName, NewSystemRace;
 Capitalization doesn't matter, so "NewSystem" and "newsystem" both work.`,
         newsystem: () => {
           const data = getSystem;
-          Display.loadingScreen(data);
+          Display.starSystem(data);
         },
         newplanet: () => {
           const data = getPlanet;
