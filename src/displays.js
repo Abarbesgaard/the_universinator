@@ -6,7 +6,7 @@ const loadingScreen = () => `
 ███████    ██    ███████ ███████ ███████ ███████  ██████ ██   ██ ██   ████`;
 
 const starSystem = ({ color, shape, distance, signal, newRegion }) => `
-Type: ${color()} (${shape()})
+Type: ${color()} (${shape(color)})
 Distance: ${distance()} units away
 Signal detected: ${signal()}
 New region: ${newRegion()}`;
