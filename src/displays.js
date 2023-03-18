@@ -8,10 +8,10 @@ const loadingScreen = () => `
 const starSystem = ({ color, shape, distance, signal, newRegion }) => {
   const starColor = color();
   const starShape = shape(starColor);
-  return `Type: ${starColor} (${starShape})<br/>
-Distance: ${distance()} units away<br/>
-Signal detected: ${signal()}<br/>
-New region: ${newRegion()}`;
+  return `Scanners are detecting a new ${starColor} star (mark it with a ${starShape} on your star map (coming soon!))<br/>
+It is ${distance()} light years away.<br/>
+${signal() ? "There is a signal detected coming from this system!" : "No signals detected."}<br/>
+This system does ${newRegion() ? "" : "not "} mark the beginning of a new region.`;
 };
 
 const planet = ({ atmosphere, biome, geology, name }) => `

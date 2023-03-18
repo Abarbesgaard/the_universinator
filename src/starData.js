@@ -185,13 +185,13 @@ function conflictDescription(conflictType) {
 
 function signal() {
   const d20Roll = rollDie(20);
-  return d20Roll === 20 ? "Yes" : "No";
+  return d20Roll === 20;
 }
 
 export const getSystem = {
   color,
   distance: () => rollDie(6),
-  newRegion: () => (rollDie(6) >= 5 ? "Yes" : "No"),
+  newRegion: () => rollDie(6) >= 5,
   shape,
   signal,
 };
