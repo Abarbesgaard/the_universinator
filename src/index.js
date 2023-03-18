@@ -2,46 +2,40 @@ import "./styles.css";
 import Terminal from "./terminal";
 import { getPlanet } from "./planetData";
 import { getSystem } from "./starData";
-import * as Templ from "./templates";
+import { Display } from "./displays";
 
+document.addEventListener("load", () => {
+  Display.loadingScreen(null);
+});
+
+// @ts-ignore
 var terminal = new Terminal(
   "terminal",
   {},
   {
-    execute: function (cmd, args) {
-      // Hide Loading Screen if still visible
-      const loader = document.getElementById("loadingScreen");
-      if (loader) loader.remove();
-
+    execute: function (/** @type {string} */ cmd, /** @type {any} */ args) {
       // Lowercase the command to reduce likelihood of typos
       cmd = cmd.toLowerCase();
 
-      switch (cmd) {
-        case "clear":
+      const commands = {
+        clear: () => {
           terminal.clear();
-          return "";
-
-        case "help":
-          return `Commands: clear, help,
+        },
+        help: () => `Commands: clear, help,
 NewSystem, NewStarName, NewSystemRace;
-Capitalization doesn't matter, so "NewSystem" and "newsystem" both work.`;
+Capitalization doesn't matter, so "NewSystem" and "newsystem" both work.`,
+        newsystem: () => {
+          const data = getSystem;
+          Display.loadingScreen(data);
+        },
+        newplanet: () => {
+          const data = getPlanet;
+          Display.planet(data);
+        },
+      };
 
-        case "newsystem":
-          const data = Get.starSystemData();
-          return Templ.starSystemDisplay(data);
-
-        case "newstarname":
-          const name = Get.starName();
-          return Templ.starNameDisplay(name);
-
-        case "newsystemrace":
-          const race = Get.systemRace();
-          return Templ.systemRaceDisplay(race);
-
-        default:
-          // Unknown command.
-          return false;
-      }
+      commands[cmd](args);
+      return "";
     },
   }
 );

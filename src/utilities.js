@@ -10,8 +10,8 @@ function rollIndex(max) {
 
 // Returns a random entry from an array
 /** @param {any[]} thing */
-function getRandom(thing) {
+function getRandomFrom(thing) {
   return thing[rollIndex(thing.length)];
 }
 
-export { getRandom, rollDie, rollIndex };
+export { getRandomFrom, rollDie, rollIndex };

@@ -1,9 +1,9 @@
-import { getRandom, rollDie, rollIndex } from "./utilities";
+import { getRandomFrom, rollDie } from "./utilities";
 
 function color() {
   const starColors = ["Yellow", "Yellow", "Yellow", "Red", "Red", "Green", "Green", "Blue"];
 
-  return getRandom(starColors);
+  return getRandomFrom(starColors);
 }
 
 function shape(color) {
@@ -12,6 +12,7 @@ function shape(color) {
   return starShapes[color];
 }
 
+/* cSpell:disable */
 function name() {
   const starNames1 = [
     "Leave",
@@ -82,9 +83,9 @@ function name() {
     "&&",
   ];
 
-  const name1 = getRandom(starNames1);
-  const name2 = getRandom(starNames2);
-  const name3 = getRandom(starNames3);
+  const name1 = getRandomFrom(starNames1);
+  const name2 = getRandomFrom(starNames2);
+  const name3 = getRandomFrom(starNames3);
 
   return `${name1}${name2}${name3}`;
 }
@@ -113,7 +114,7 @@ function race() {
     "Saluander",
   ];
 
-  return getRandom(systemRaces);
+  return getRandomFrom(systemRaces);
 }
 
 function economy() {
@@ -128,13 +129,13 @@ function economy() {
     "Wealthy",
   ];
 
-  return getRandom(systemEconomies);
+  return getRandomFrom(systemEconomies);
 }
 
 function conflictType() {
   const conflictTypes = ["Low", "Low", "Low", "Medium", "Medium", "High"];
 
-  return getRandom(conflictTypes);
+  return getRandomFrom(conflictTypes);
 }
 
 /** @param {string} conflictType */
@@ -178,12 +179,12 @@ function conflictDescription(conflictType) {
     ],
   };
 
-  return getRandom(ConflictTypesMap[conflictType]);
+  return getRandomFrom(ConflictTypesMap[conflictType]);
 }
 
 function signal() {
   const d20Roll = rollDie(20);
-  const signal = d20Roll === 20 ? "Yes" : "No";
+  return d20Roll === 20 ? "Yes" : "No";
 }
 
 export const getSystem = {

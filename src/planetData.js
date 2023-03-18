@@ -1,6 +1,7 @@
-import { getRandom, rollDie, rollIndex } from "./utilities";
+import { getRandomFrom } from "./utilities";
 
 function atmosphere() {
+  /* cSpell:disable */
   const planetAtmospheres = [
     "Argon",
     "Carbon Dioxide",
@@ -24,7 +25,7 @@ function atmosphere() {
     "Thamium",
   ];
 
-  return getRandom(planetAtmospheres);
+  return getRandomFrom(planetAtmospheres);
 }
 
 function biome() {
@@ -41,7 +42,7 @@ function biome() {
     "Volcanic",
   ];
 
-  return getRandom(planetBiomes);
+  return getRandomFrom(planetBiomes);
 }
 
 function geology() {
@@ -148,7 +149,7 @@ function geology() {
     "Volcanic",
   ];
 
-  return getRandom(planetGeologies);
+  return getRandomFrom(planetGeologies);
 }
 
 function name() {
@@ -221,9 +222,9 @@ function name() {
     "Glad",
   ];
 
-  const name1 = getRandom(planetNames1);
-  const name2 = getRandom(planetNames2);
-  const name3 = getRandom(planetNames3);
+  const name1 = getRandomFrom(planetNames1);
+  const name2 = getRandomFrom(planetNames2);
+  const name3 = getRandomFrom(planetNames3);
 
   return `${name1}${name2}${name3}`;
 }
