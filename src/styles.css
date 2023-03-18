@@ -9,6 +9,18 @@ body {
   font-size: 24px;
 }
 
+.gameContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 800px) {
+  .gameContainer {
+    flex-direction: column;
+  }
+}
+
 .menuButton {
   color: var(--light-green);
   background-color: var(--dark-green);
