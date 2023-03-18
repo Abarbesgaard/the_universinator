@@ -1,6 +1,7 @@
 import "./styles.css";
 import Terminal from "./terminal";
-import * as Get from "./starData";
+import { getPlanet } from "./planetData";
+import { getSystem } from "./starData";
 import * as Templ from "./templates";
 
 var terminal = new Terminal(
