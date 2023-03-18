@@ -7,6 +7,7 @@ function color() {
 }
 
 function shape(color) {
+  console.log("starshape color:", color);
   const starShapes = { Yellow: "Circle", Red: "Square", Green: "Triangle", Blue: "Double Circle" };
 
   return starShapes[color];

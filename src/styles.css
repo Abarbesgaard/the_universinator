@@ -20,6 +20,11 @@ body {
   margin: 0 0 0 16px;
   padding: 1em 2em;
   border: 2px solid var(--light-green);
+  width: 50%;
+}
+
+#themeScreen {
+  font-size: 10px;
 }
 
 .cmdline {

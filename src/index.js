@@ -4,10 +4,6 @@ import { getPlanet } from "./planetData";
 import { getSystem } from "./starData";
 import { Display } from "./displays";
 
-document.addEventListener("load", () => {
-  Display.loadingScreen("");
-});
-
 // @ts-ignore
 var terminal = new Terminal(
   "terminal",
@@ -21,9 +17,11 @@ var terminal = new Terminal(
         clear: () => {
           terminal.clear();
         },
-        help: () => `Commands: clear, help,
-NewSystem, NewStarName, NewSystemRace;
-Capitalization doesn't matter, so "NewSystem" and "newsystem" both work.`,
+        help: () => {
+          return `Commands: clear, help,<br/>
+NewSystem, NewPlanet;<br/>
+capitalization doesn't matter, so "NewSystem" and "newsystem" both work.`;
+        },
         newsystem: () => {
           const data = getSystem;
           Display.starSystem(data);
