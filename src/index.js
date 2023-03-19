@@ -1,9 +1,6 @@
 import "./styles.css";
 import Terminal from "./terminal";
-import { makePlanet } from "./generators/planetData";
-import { makeStarSystem } from "./generators/starData";
-import { Display } from "./displays";
-import { GameState } from "./gameLogic/gameState";
+import { scanForPlanets, scanForSystems } from "./gameLogic/gameFunctions";
 
 // @ts-ignore
 var terminal = new Terminal(
@@ -20,18 +17,14 @@ var terminal = new Terminal(
         },
         help: () => {
           return `Commands: clear, help,<br/>
-NewSystem, NewPlanet;<br/>
-capitalization doesn't matter, so "NewSystem" and "newsystem" both work.`;
+ScanSystem, ScanPlanet;<br/>
+capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
         },
-        newsystem: () => {
-          const data = makeStarSystem.next().value;
-          GameState.addSystem(data);
-          Display.starSystem(data);
+        scansystem: () => {
+          scanForSystems(1);
         },
-        newplanet: () => {
-          const data = makePlanet.next(GameState.currentSystemId).value;
-          GameState.addPlanet(data);
-          Display.planet(data);
+        scanplanet: () => {
+          scanForPlanets(1);
         },
       };
 
