@@ -1,8 +1,9 @@
 import "./styles.css";
 import Terminal from "./terminal";
-import { planetGenerator } from "./generators/planetData";
-import { starSystemGenerator } from "./generators/starData";
+import { makePlanet } from "./generators/planetData";
+import { makeStarSystem } from "./generators/starData";
 import { Display } from "./displays";
+import { GameState } from "./gameLogic/gameState";
 
 // @ts-ignore
 var terminal = new Terminal(
@@ -23,11 +24,13 @@ NewSystem, NewPlanet;<br/>
 capitalization doesn't matter, so "NewSystem" and "newsystem" both work.`;
         },
         newsystem: () => {
-          const data = starSystemGenerator;
+          const data = makeStarSystem.next().value;
+          GameState.addSystem(data);
           Display.starSystem(data);
         },
         newplanet: () => {
-          const data = planetGenerator;
+          const data = makePlanet.next(GameState.currentSystemId).value;
+          GameState.addPlanet(data);
           Display.planet(data);
         },
       };

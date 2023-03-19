@@ -187,16 +187,27 @@ function signal() {
   return d20Roll === 20;
 }
 
-export const starSystemGenerator = {
-  conflictDescription,
-  conflictType,
-  color,
-  distance: () => rollDie(6),
-  economy,
-  newRegion: () => rollDie(6) >= 5,
-  planets: [],
-  race,
-  shape,
-  signalDetected: signal,
-  signalExplored: false,
-};
+/** @returns {Generator<StarSystem>} */
+function* starSystemGenerator() {
+  let id = 0;
+  while (true) {
+    let conflict = conflictType();
+    let thisColor = color();
+    yield {
+      id: id++,
+      conflictDescription: conflictDescription(conflict),
+      conflictType: conflict,
+      color: thisColor,
+      distance: rollDie(6),
+      economy: economy(),
+      newRegion: rollDie(6) >= 5,
+      planets: [],
+      race: race(),
+      shape: shape(thisColor),
+      signalDetected: signal(),
+      signalExplored: false,
+    };
+  }
+}
+
+export const makeStarSystem = starSystemGenerator();

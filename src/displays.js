@@ -1,44 +1,35 @@
-const loadingScreen = () => `
-███████ ████████ ███████ ███████ ██      ███████  ██████  █████  ███    ██<br/>
-██         ██    ██      ██      ██      ██      ██      ██   ██ ████   ██<br/>
-███████    ██    █████   █████   ██      ███████ ██      ███████ ██ ██  ██<br/>
-     ██    ██    ██      ██      ██           ██ ██      ██   ██ ██  ██ ██<br/>
-███████    ██    ███████ ███████ ███████ ███████  ██████ ██   ██ ██   ████`;
-
-const starSystem = ({ color, shape, distance, signal, newRegion }) => {
-  const starColor = color();
-  const starShape = shape(starColor);
-  return `Scanners are detecting a new ${starColor} star (mark it with a ${starShape} on your star map (coming soon!))<br/>
-It is ${distance()} light years away.<br/>
-${signal() ? "There is a signal detected coming from this system!" : "No signals detected."}<br/>
-This system does ${newRegion() ? "" : "not "} mark the beginning of a new region.`;
+/** @param {StarSystem} arg0 */
+const starSystem = ({ color, shape, distance, signalDetected, newRegion }) => {
+  return `Scanners are detecting a new ${color} star (mark it with a ${shape} on your star map (coming soon!))<br/>
+It is ${distance} light years away.<br/>
+${signalDetected ? "There is a signal detected coming from this system!" : "No signals detected."}<br/>
+This system does ${newRegion ? "" : "not "} mark the beginning of a new region.`;
 };
 
+/** @param {Planet} arg0 */
 const planet = ({ atmosphere, biome, geology, name }) => `
-Name: ${name()}<br/>
-Atmosphere: ${atmosphere()}<br/>
-Primary Biome: ${biome()}<br/>
-Dominant Geology: ${geology()}`;
+Name: ${name}<br/>
+Atmosphere: ${atmosphere}<br/>
+Primary Biome: ${biome}<br/>
+Dominant Geology: ${geology}`;
 
 /**
  * @param {Function} thing
  * @param {Object} items
  */
-export function displayThing(thing, items, screen = "displayScreen") {
+export function displayThing(thing, items) {
   /** @type {string} */
   const stuffToDisplay = thing(items);
-  const displayEl = document.getElementById(screen);
+  const displayEl = document.getElementById("displayScreen");
   if (displayEl) displayEl.innerHTML = stuffToDisplay;
 }
 /** @typedef {Object} DisplayThing
- * @property {([arg0]: Object) => void} loadingScreen
- * @property {(arg0: Object) => void} starSystem
+ * @property {(item: StarSystem) => void} starSystem
  * @property {(arg0: Object) => void} planet
  * */
 
 /** @type {DisplayThing} */
 export const Display = {
-  loadingScreen: (items) => displayThing(loadingScreen, items, "themeScreen"),
-  starSystem: (items) => displayThing(starSystem, items),
+  starSystem: (item) => displayThing(starSystem, item),
   planet: (items) => displayThing(planet, items),
 };

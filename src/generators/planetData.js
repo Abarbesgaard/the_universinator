@@ -229,9 +229,19 @@ function name() {
   return `${name1}${name2}${name3}`;
 }
 
-export const planetGenerator = {
-  atmosphere,
-  biome,
-  geology,
-  name,
-};
+/** @returns {Generator<Planet>} */
+function* planetGenerator(systemId) {
+  let id = 0;
+  while (true) {
+    yield {
+      id: id++,
+      atmosphere: atmosphere(),
+      biome: biome(),
+      geology: geology(),
+      name: name(),
+      systemId,
+    };
+  }
+}
+
+export const makePlanet = planetGenerator();
