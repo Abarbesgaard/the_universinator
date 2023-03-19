@@ -1,4 +1,4 @@
-import { getRandomFrom } from "./utilities";
+import { getRandomFrom } from "../utilities";
 
 function atmosphere() {
   /* cSpell:disable */
@@ -229,7 +229,7 @@ function name() {
   return `${name1}${name2}${name3}`;
 }
 
-export const getPlanet = {
+export const planetGenerator = {
   atmosphere,
   biome,
   geology,

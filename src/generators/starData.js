@@ -1,4 +1,4 @@
-import { getRandomFrom, rollDie } from "./utilities";
+import { getRandomFrom, rollDie } from "../utilities";
 
 function color() {
   const starColors = ["Yellow", "Yellow", "Yellow", "Red", "Red", "Green", "Green", "Blue"];
@@ -7,7 +7,6 @@ function color() {
 }
 
 function shape(color) {
-  console.log("starshape color:", color);
   const starShapes = { Yellow: "Circle", Red: "Square", Green: "Triangle", Blue: "Double Circle" };
 
   return starShapes[color];
@@ -188,10 +187,16 @@ function signal() {
   return d20Roll === 20;
 }
 
-export const getSystem = {
+export const starSystemGenerator = {
+  conflictDescription,
+  conflictType,
   color,
   distance: () => rollDie(6),
+  economy,
   newRegion: () => rollDie(6) >= 5,
+  planets: [],
+  race,
   shape,
-  signal,
+  signalDetected: signal,
+  signalExplored: false,
 };
