@@ -26,3 +26,9 @@ export function listSystems() {
     Display.starSystemShort(system);
   }
 }
+
+export function listPlanets() {
+  for (let planet of GameState.planets) {
+    Display.planetShort(planet);
+  }
+}

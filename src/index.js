@@ -1,6 +1,6 @@
 import "./styles.css";
 import Terminal from "./terminal";
-import { listSystems, scanForPlanets, scanForSystems } from "./gameLogic/gameFunctions";
+import { listPlanets, listSystems, scanForPlanets, scanForSystems } from "./gameLogic/gameFunctions";
 
 // @ts-ignore
 var terminal = new Terminal(
@@ -28,6 +28,9 @@ capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
         },
         scanplanet: () => {
           scanForPlanets(1);
+        },
+        listplanets: () => {
+          listPlanets();
         },
       };
 

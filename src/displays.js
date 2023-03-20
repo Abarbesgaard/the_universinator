@@ -31,6 +31,9 @@ Atmosphere: ${atmosphere}<br/>
 Primary Biome: ${biome}<br/>
 Dominant Geology: ${geology}`;
 
+/** @param {Planet} arg0 */
+const planetShort = ({ id, name }) => `Planet #${id}: ${name}.`;
+
 /**
  * @param {Function} thing
  * @param {Object} items
@@ -46,7 +49,8 @@ export function displayThing(thing, items) {
 /** @typedef {Object} DisplayThing
  * @property {(item: StarSystem) => void} starSystem
  * @property {(item: StarSystem) => void} starSystemShort
- * @property {(arg0: Object) => void} planet
+ * @property {(item: Planet) => void} planet
+ * @property {(item: Planet) => void} planetShort
  * */
 
 /** @type {DisplayThing} */
@@ -54,4 +58,5 @@ export const Display = {
   starSystem: (item) => displayThing(starSystem, item),
   starSystemShort: (item) => displayThing(starSystemShort, item),
   planet: (items) => displayThing(planet, items),
+  planetShort: (items) => displayThing(planetShort, items),
 };
