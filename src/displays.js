@@ -27,7 +27,9 @@ export function displayThing(thing, items) {
   /** @type {string} */
   const stuffToDisplay = thing(items);
   const displayEl = document.getElementById("displayScreen");
-  if (displayEl) displayEl.innerHTML = stuffToDisplay;
+  const hr = `<hr>`;
+  if (displayEl) displayEl.innerHTML += `${stuffToDisplay}${hr}`;
+  displayEl?.scrollBy({ top: 200 });
 }
 /** @typedef {Object} DisplayThing
  * @property {(item: StarSystem) => void} starSystem
