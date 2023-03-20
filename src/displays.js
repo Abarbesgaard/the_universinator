@@ -1,6 +1,12 @@
 /** @param {StarSystem} arg0 */
 const starSystem = ({ color, shape, distance, signalDetected, newRegion }) => {
-  return `Scanners are detecting a new ${color} star (mark it with a ${shape} on your star map (coming soon!))<br/>
+  const starShapes = {
+    Circle: "⚬",
+    Square: "□",
+    Triangle: "△",
+    "Double Circle": "☉",
+  };
+  return `Scanners are detecting a new ${color} star, marking it with a ${starShapes[shape]}.<br/>
 It is ${distance} light years away.<br/>
 ${signalDetected ? "There is a signal detected coming from this system!" : "No signals detected."}<br/>
 This system does ${newRegion ? "" : "not "} mark the beginning of a new region.`;

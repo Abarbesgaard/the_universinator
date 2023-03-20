@@ -2,7 +2,10 @@
   --light-green: #2cd113;
   --dark-green: #184711;
   --base-font-size: 20px;
-  --glow-shadow: 0 0 1px #fff, 0 0 3px var(--light-green);
+  --glow-shadow: 0 0 1px #fff, 0 0 2px var(--light-green);
+  --box-glow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--light-green), 0 0 4px var(--light-green),
+    0 0 5px var(--light-green);
+  --mono-font: "VT323", monospace;
 }
 
 body {
@@ -11,6 +14,10 @@ body {
   text-shadow: var(--glow-shadow);
   font-size: var(--base-font-size);
   box-sizing: border-box;
+}
+
+pre {
+  font-family: var(--mono-font);
 }
 
 .gameContainer {
@@ -29,10 +36,10 @@ body {
   margin: 0 16px 0 0;
   padding: 1em 2em;
   border: 2px solid var(--light-green);
-  box-shadow: var(--glow-shadow);
+  box-shadow: var(--box-glow);
   width: 50%;
   height: 90vh;
-  font-family: monospace;
+  font-family: var(--mono-font);
 }
 
 .sidebar {
@@ -45,7 +52,7 @@ body {
 #themeScreen {
   flex: 1 1;
   border: 2px solid var(--light-green);
-  box-shadow: var(--glow-shadow);
+  box-shadow: var(--box-glow);
   font-size: 12px;
   padding: 16px;
   margin-bottom: 16px;
@@ -55,10 +62,14 @@ body {
   justify-content: center;
 }
 
+#themeScreen pre {
+  font-family: monospace;
+}
+
 #terminalScreen {
   flex: 1 0 60%;
   border: 2px solid var(--light-green);
-  box-shadow: var(--glow-shadow);
+  box-shadow: var(--box-glow);
   padding: 16px;
 }
 
@@ -68,11 +79,11 @@ body {
   outline: none;
   background-color: var(--dark-green);
   color: #0fa;
-  font-family: monospace;
+  font-family: var(--mono-font);
   font-size: var(--base-font-size);
   text-shadow: var(--glow-shadow);
 }
 
 .terminal {
-  font-family: monospace;
+  font-family: var(--mono-font);
 }
