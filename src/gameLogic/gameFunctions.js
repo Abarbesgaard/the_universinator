@@ -20,3 +20,9 @@ export function scanForPlanets(quantity = 1) {
     Display.planet(data);
   }
 }
+
+export function listSystems() {
+  for (let system of GameState.systems) {
+    Display.starSystemShort(system);
+  }
+}

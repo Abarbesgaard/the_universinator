@@ -16,6 +16,10 @@ body {
   box-sizing: border-box;
 }
 
+hr {
+  border: 1px dashed var(--light-green);
+}
+
 pre {
   font-family: var(--mono-font);
 }

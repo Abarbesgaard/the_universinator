@@ -30,6 +30,7 @@
  * @property {string} color
  * @property {number} distance
  * @property {string} economy
+ * @property {string} name
  * @property {boolean} newRegion
  * @property {Array<Planet>} planets
  * @property {string} race

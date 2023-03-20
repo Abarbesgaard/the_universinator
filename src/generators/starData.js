@@ -200,6 +200,7 @@ function* starSystemGenerator() {
       color: thisColor,
       distance: rollDie(6),
       economy: economy(),
+      name: name(),
       newRegion: rollDie(6) >= 5,
       planets: [],
       race: race(),
