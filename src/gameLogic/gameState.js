@@ -7,6 +7,17 @@ export const GameState = {
 
   currentSystemId: 0,
 
+  shipInfo: {
+    probeQuantity: Infinity,
+  },
+  crewMembers: {
+    science: {},
+    tactical: {},
+    engineering: {},
+    medical: {},
+    command: {}
+  }
+
   addLog: (logItem) => GameState.logs.push(logItem),
   addMessage: (messageItem) => GameState.messages.push(messageItem),
   addPlanet: (planet) => GameState.planets.push(planet),
