@@ -16,7 +16,7 @@ export const GameState = {
     engineering: {},
     medical: {},
     command: {}
-  }
+  },
 
   addLog: (logItem) => GameState.logs.push(logItem),
   addMessage: (messageItem) => GameState.messages.push(messageItem),
