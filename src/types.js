@@ -6,7 +6,7 @@
  */
 
 /**
- * @typedef {Object} GameState
+ * @typedef {Object} GameStateType
  * @property {Array<LoggedText>} logs
  * @property {Array<LoggedText>} messages
  * @property {Array<Planet>} planets
@@ -14,12 +14,33 @@
  *
  * @property {number} currentSystemId
  *
+ * @property {ShipInfo} shipInfo
+ * @property {{[x:string]: CrewMember}} crewMembers
+ *
  * @property {(logItem: LoggedText) => void} addLog
  * @property {(messageItem: LoggedText) => void} addMessage
  * @property {(planet: Planet) => void} addPlanet
  * @property {(system: StarSystem) => void} addSystem
  * @property {(logId: number) => LoggedText | undefined} getLogById
  * @property {(messageId: number) => LoggedText | undefined} getMessageById
+ */
+
+/**
+ * @typedef {Object} ShipInfo
+ * @property {Number} probeQuantity
+ */
+
+/**
+ * @typedef {Object} CrewMember
+ * @property {string} name
+ * @property {string} bonusType
+ */
+
+/** @typedef {Object} GameFunctions
+ * @property {() => void} listPlanets
+ * @property {() => void} listSystems
+ * @property {(quantity: number) => void} scanForPlanets
+ * @property {(quantity: number) => void} scanForSystems
  */
 
 /**

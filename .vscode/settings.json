@@ -1,3 +1,13 @@
 {
-  "cSpell.words": ["cmdline", "newplanet", "newsystem", "scanplanet", "scansystem", "Universinator"]
+  "cSpell.words": [
+    "cmdline",
+    "listplanets",
+    "listsystems",
+    "localforage",
+    "newplanet",
+    "newsystem",
+    "scanplanet",
+    "scansystem",
+    "Universinator"
+  ]
 }

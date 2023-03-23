@@ -1,6 +1,15 @@
 import "./styles.css";
 import Terminal from "./terminal";
-import { listPlanets, listSystems, scanForPlanets, scanForSystems } from "./gameLogic/gameFunctions";
+import { Game } from "./gameLogic/gameFunctions";
+import localforage from "localforage";
+
+localforage.getItem("gameSaved", (err, val) => {
+  if (err) {
+    Game.newGame();
+  } else {
+    Game.importSavedGame();
+  }
+});
 
 // @ts-ignore
 var terminal = new Terminal(
@@ -20,17 +29,17 @@ var terminal = new Terminal(
 ScanSystem, ScanPlanet;<br/>
 capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
         },
-        scansystem: () => {
-          scanForSystems(1);
+        scansystem: (quantity = 1) => {
+          Game.scanForSystems(quantity);
         },
         listsystems: () => {
-          listSystems();
+          Game.listSystems();
         },
-        scanplanet: () => {
-          scanForPlanets(1);
+        scanplanet: (quantity = 1) => {
+          Game.scanForPlanets(quantity);
         },
         listplanets: () => {
-          listPlanets();
+          Game.listPlanets();
         },
       };
 

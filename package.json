@@ -8,6 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "localforage": "^1.10.0",
     "parcel": "^2.0.0"
   },
   "devDependencies": {

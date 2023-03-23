@@ -3,7 +3,7 @@ import { makeStarSystem } from "../generators/starData";
 import { Display } from "../displays";
 import { GameState } from "./gameState";
 
-export function scanForSystems(quantity = 1) {
+function scanForSystems(quantity = 1) {
   while (quantity) {
     quantity--;
     const data = makeStarSystem.next().value;
@@ -12,7 +12,7 @@ export function scanForSystems(quantity = 1) {
   }
 }
 
-export function scanForPlanets(quantity = 1) {
+function scanForPlanets(quantity = 1) {
   while (quantity) {
     quantity--;
     const data = makePlanet.next(GameState.currentSystemId).value;
@@ -21,14 +21,22 @@ export function scanForPlanets(quantity = 1) {
   }
 }
 
-export function listSystems() {
+function listSystems() {
   for (let system of GameState.systems) {
     Display.starSystemShort(system);
   }
 }
 
-export function listPlanets() {
+function listPlanets() {
   for (let planet of GameState.planets) {
     Display.planetShort(planet);
   }
 }
+
+/** @type {GameFunctions} */
+export const Game = {
+  listPlanets,
+  listSystems,
+  scanForPlanets,
+  scanForSystems,
+};
