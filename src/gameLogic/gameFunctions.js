@@ -2,7 +2,6 @@ import { makePlanet } from "../generators/planetData";
 import { makeStarSystem } from "../generators/starData";
 import { Display } from "../displays";
 import { GameState } from "./gameState";
-import localforage from "localforage";
 
 function scanForSystems(quantity = 1) {
   do {
