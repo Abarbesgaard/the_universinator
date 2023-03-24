@@ -1,7 +1,7 @@
 import { ProbeType } from "./gameEnums";
 
 /** @type {GameStateType} */
-export const GameState = {
+export const GameStateDefault = {
   logs: [],
   messages: [],
   planets: [],
@@ -39,4 +39,16 @@ export const GameState = {
   },
   getLogById: (logId) => GameState.logs.find((log) => log.id === logId),
   getMessageById: (messageId) => GameState.messages.find((message) => message.id === messageId),
+
+  importSavedGame: (/** @type {GameStateType} */ savedGame) => {
+    console.log("iSG called");
+    GameState = { ...savedGame };
+  },
+  newGame: () => {
+    console.log("nG called");
+    GameState = { ...GameStateDefault };
+  },
 };
+
+export let GameState = { ...GameStateDefault };
+console.log("GameState init:", GameState);

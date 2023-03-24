@@ -4,10 +4,10 @@ import { Game } from "./gameLogic/gameFunctions";
 import localforage from "localforage";
 
 localforage.getItem("gameSaved", (err, val) => {
-  if (err) {
+  if (val === null) {
     Game.newGame();
   } else {
-    Game.importSavedGame();
+    Game.importSavedGame(val);
   }
 });
 

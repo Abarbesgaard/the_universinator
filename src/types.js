@@ -23,6 +23,9 @@
  * @property {(system: StarSystem) => void} addSystem
  * @property {(logId: number) => LoggedText | undefined} getLogById
  * @property {(messageId: number) => LoggedText | undefined} getMessageById
+ *
+ * @property {(savedGame: GameStateType) => void} importSavedGame
+ * @property {() => void} newGame
  */
 
 /**
@@ -41,6 +44,8 @@
  * @property {() => void} listSystems
  * @property {(quantity: number) => void} scanForPlanets
  * @property {(quantity: number) => void} scanForSystems
+ * @property {() => void} newGame
+ * @property {(savedGame: GameStateType) => void} importSavedGame
  */
 
 /**
