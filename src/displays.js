@@ -1,7 +1,13 @@
 import { Game } from "./gameLogic/gameFunctions";
 
 const newGameMessage = () => {
-  const message = () => `Welcome message goes here.<br>
+  const message = () => `Hello! Hello? Do you read me?<br>
+...<br>
+My readings indicate you're receiving me but are not capable of responding yet. That's fine, I'll just trust you to listen for now. Er, read, not listen. Millions of years of space exploration and no one thought to make sure we had working, two-way audio.<br>
+...<br>
+Moving on.<br>
+...<br>
+Welcome, captain, to IPASA, the InterPlanetary Aeronautics and Space Administration. By engaging this ship's SteelScan universal scanner, you have agreed to become our newest space explorer, the captain of your very own ship, charged with discovering the unexplored parts of your sector. Your cryogenically preserved crew should be coming out of their stasis sleep soon. But first, you should name your ship!<br>
 ...<br>
 To the right of this display screen is a command prompt. Type in the command "shipname" followed by the name you wish to give your ship, and then press the key labeled "return" on your keyboard. Or maybe it was labeled "enter", I don't remember what we decided to call it in your language.`;
   displayThing(message, null);

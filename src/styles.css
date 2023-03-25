@@ -2,7 +2,7 @@
   --light-green: #2cd113;
   --dark-green: #184711;
   --base-font-size: 22px;
-  --glow-shadow: 0 0 3px #0fa, 0 0 6px var(--light-green);
+  --glow-shadow: 0 0 2px #0fa, 0 0 4px var(--light-green);
   --box-glow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--light-green), 0 0 4px var(--light-green),
     0 0 5px var(--light-green);
   --mono-font: "VT323", monospace;
