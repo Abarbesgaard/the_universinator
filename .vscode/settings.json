@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "cmdline",
+    "IPASA",
     "listplanets",
     "listsystems",
     "localforage",
@@ -8,6 +9,7 @@
     "newsystem",
     "scanplanet",
     "scansystem",
+    "shipname",
     "Universinator"
   ]
 }

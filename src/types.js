@@ -15,22 +15,21 @@
  * @property {number} currentSystemId
  *
  * @property {ShipInfo} shipInfo
- * @property {{[x:string]: CrewMember}} crewMembers
- *
- * @property {(logItem: LoggedText) => void} addLog
- * @property {(messageItem: LoggedText) => void} addMessage
- * @property {(planet: Planet) => void} addPlanet
- * @property {(system: StarSystem) => void} addSystem
- * @property {(logId: number) => LoggedText | undefined} getLogById
- * @property {(messageId: number) => LoggedText | undefined} getMessageById
- *
- * @property {(savedGame: GameStateType) => void} importSavedGame
- * @property {() => void} newGame
+ * @property {CrewMembersObject} crewMembers
  */
 
 /**
  * @typedef {Object} ShipInfo
+ * @property {string} name
  * @property {Number} probeQuantity
+ */
+
+/**
+ * @typedef {Object} CrewMembersObject
+ * @property {CrewMember} science
+ * @property {CrewMember} engineering
+ * @property {CrewMember} medical
+ * @property {CrewMember} tactical
  */
 
 /**
@@ -39,13 +38,34 @@
  * @property {string} bonusType
  */
 
-/** @typedef {Object} GameFunctions
+/**
+ * @typedef {Object} GameFunctions
+ * @property {(logItem: LoggedText) => void} addLog
+ * @property {(messageItem: LoggedText) => void} addMessage
+ * @property {(planet: Planet) => void} addPlanet
+ * @property {(system: StarSystem) => void} addSystem
+ * @property {() => object} getCrewNames
+ * @property {(logId: number) => LoggedText | undefined} getLogById
+ * @property {(messageId: number) => LoggedText | undefined} getMessageById
+ * @property {() => string} getShipName
+ * @property {(savedGame: GameStateType) => void} importSavedGame
  * @property {() => void} listPlanets
  * @property {() => void} listSystems
+ * @property {() => void} newGame
+ * @property {() => void} saveGame
  * @property {(quantity: number) => void} scanForPlanets
  * @property {(quantity: number) => void} scanForSystems
- * @property {() => void} newGame
- * @property {(savedGame: GameStateType) => void} importSavedGame
+ * @property {(name: string) => void} setShipName
+ */
+
+/**
+ * @typedef {Object} DisplayThing
+ * @property {() => void} newGameMessage
+ * @property {(item: Planet) => void} planet
+ * @property {(item: Planet) => void} planetShort
+ * @property {() => void} shipNameSaved
+ * @property {(item: StarSystem) => void} starSystem
+ * @property {(item: StarSystem) => void} starSystemShort
  */
 
 /**

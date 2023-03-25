@@ -1,3 +1,23 @@
+import { Game } from "./gameLogic/gameFunctions";
+
+const newGameMessage = () => {
+  const message = () => `Welcome message goes here.<br>
+...<br>
+To the right of this display screen is a command prompt. Type in the command "shipname" followed by the name you wish to give your ship, and then press the key labeled "return" on your keyboard. Or maybe it was labeled "enter", I don't remember what we decided to call it in your language.`;
+  displayThing(message, null);
+};
+
+const shipNameSaved = () => {
+  const shipName = Game.getShipName();
+  const { ScienceOfficer, EngineeringOfficer, MedicalOfficer, TacticalOfficer } = Game.getCrewNames();
+  const message = () => `The IPASA ${shipName}. Fine, fine name for a ship.<br>
+...<br>
+Introduce Crew (or have them introduce themselves). Science: ${ScienceOfficer}, Engineering: ${EngineeringOfficer}, Medical: ${MedicalOfficer}, Tactical: ${TacticalOfficer}<br>
+...<br>
+To scan your current star system, type "scansystem" into the command prompt.`;
+  displayThing(message, null);
+};
+
 /** @param {StarSystem} arg0 */
 const starSystem = ({ color, shape, distance, name, signalDetected, newRegion }) => {
   const starShapes = {
@@ -46,17 +66,13 @@ export function displayThing(thing, items) {
   if (displayEl) displayEl.innerHTML += `${stuffToDisplay}${hr}`;
   displayEl?.scrollBy({ top: 200 });
 }
-/** @typedef {Object} DisplayThing
- * @property {(item: StarSystem) => void} starSystem
- * @property {(item: StarSystem) => void} starSystemShort
- * @property {(item: Planet) => void} planet
- * @property {(item: Planet) => void} planetShort
- * */
 
 /** @type {DisplayThing} */
 export const Display = {
-  starSystem: (item) => displayThing(starSystem, item),
-  starSystemShort: (item) => displayThing(starSystemShort, item),
+  newGameMessage,
   planet: (items) => displayThing(planet, items),
   planetShort: (items) => displayThing(planetShort, items),
+  shipNameSaved,
+  starSystem: (item) => displayThing(starSystem, item),
+  starSystemShort: (item) => displayThing(starSystemShort, item),
 };

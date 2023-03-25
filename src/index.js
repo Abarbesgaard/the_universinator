@@ -3,7 +3,7 @@ import Terminal from "./terminal";
 import { Game } from "./gameLogic/gameFunctions";
 import localforage from "localforage";
 
-localforage.getItem("gameSaved", (err, val) => {
+localforage.getItem("GameState", (err, val) => {
   if (val === null) {
     Game.newGame();
   } else {
@@ -23,11 +23,15 @@ var terminal = new Terminal(
       const commands = {
         clear: () => {
           terminal.clear();
+          localforage.clear();
         },
         help: () => {
           return `Commands: clear, help,<br/>
 ScanSystem, ScanPlanet;<br/>
 capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
+        },
+        shipname: (name) => {
+          Game.setShipName(name);
         },
         scansystem: (quantity = 1) => {
           Game.scanForSystems(quantity);

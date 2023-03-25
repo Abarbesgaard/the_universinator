@@ -10,6 +10,7 @@ export const GameStateDefault = {
   currentSystemId: 0,
 
   shipInfo: {
+    name: "",
     probeQuantity: Infinity,
   },
   crewMembers: {
@@ -30,25 +31,15 @@ export const GameStateDefault = {
       bonusType: ProbeType.medical,
     },
   },
-
-  addLog: (logItem) => GameState.logs.push(logItem),
-  addMessage: (messageItem) => GameState.messages.push(messageItem),
-  addPlanet: (planet) => GameState.planets.push(planet),
-  addSystem: (system) => {
-    GameState.systems.push(system);
-  },
-  getLogById: (logId) => GameState.logs.find((log) => log.id === logId),
-  getMessageById: (messageId) => GameState.messages.find((message) => message.id === messageId),
-
-  importSavedGame: (/** @type {GameStateType} */ savedGame) => {
-    console.log("iSG called");
-    GameState = { ...savedGame };
-  },
-  newGame: () => {
-    console.log("nG called");
-    GameState = { ...GameStateDefault };
-  },
 };
 
 export let GameState = { ...GameStateDefault };
-console.log("GameState init:", GameState);
+
+export const importSavedGame = (/** @type {GameStateType} */ savedGame) => {
+  console.log("iSG called");
+  GameState = { ...savedGame };
+};
+export const newGame = () => {
+  console.log("nG called");
+  GameState = { ...GameStateDefault };
+};
