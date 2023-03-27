@@ -10,8 +10,10 @@
  * @property {Array<LoggedText>} logs
  * @property {Array<LoggedText>} messages
  * @property {Array<Planet>} planets
+ * @property {Array<Region>} regions
  * @property {Array<StarSystem>} systems
  *
+ * @property {number} currentRegionId
  * @property {number} currentSystemId
  *
  * @property {ShipInfo} shipInfo
@@ -43,14 +45,15 @@
  * @property {(logItem: LoggedText) => void} addLog
  * @property {(messageItem: LoggedText) => void} addMessage
  * @property {(planet: Planet) => void} addPlanet
+ * @property {(region: Region) => void} addRegion
  * @property {(system: StarSystem) => void} addSystem
  * @property {() => object} getCrewNames
  * @property {(logId: number) => LoggedText | undefined} getLogById
  * @property {(messageId: number) => LoggedText | undefined} getMessageById
  * @property {() => string} getShipName
  * @property {(savedGame: GameStateType) => void} importSavedGame
- * @property {() => void} listPlanets
- * @property {() => void} listSystems
+ * @property {() => void} listPlanetsInSystem
+ * @property {() => void} listSystemsInRegion
  * @property {() => void} newGame
  * @property {() => void} saveGame
  * @property {(quantity: number) => void} scanForPlanets
@@ -71,6 +74,7 @@
 /**
  * @typedef {Object} StarSystem
  * @property {number} id
+ * @property {number} regionId
  * @property {string} conflictDescription
  * @property {string} conflictType
  * @property {string} color
@@ -88,9 +92,16 @@
 /**
  * @typedef {Object} Planet
  * @property {number} id
+ * @property {number} systemId
  * @property {string} atmosphere
  * @property {string} biome
  * @property {string} geology
  * @property {string} name
  * @property {number} systemId
+ */
+
+/**
+ * @typedef {Object} Region
+ * @property {number} id
+ * @property {string} name
  */

@@ -5,9 +5,11 @@ export const GameStateDefault = {
   logs: [],
   messages: [],
   planets: [],
+  regions: [],
   systems: [],
 
   currentSystemId: 0,
+  currentRegionId: 0,
 
   shipInfo: {
     name: "",

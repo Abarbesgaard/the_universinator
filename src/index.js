@@ -37,13 +37,13 @@ capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
           Game.scanForSystems(quantity);
         },
         listsystems: () => {
-          Game.listSystems();
+          Game.listSystemsInRegion();
         },
         scanplanet: (quantity = 1) => {
           Game.scanForPlanets(quantity);
         },
         listplanets: () => {
-          Game.listPlanets();
+          Game.listPlanetsInSystem();
         },
       };
 

@@ -15,9 +15,11 @@ function scanForSystems(quantity = 1) {
   saveGame();
 }
 
-function listSystems() {
+function listSystemsInRegion() {
   for (let system of GameState.systems) {
-    Display.starSystemShort(system);
+    if (GameState.currentRegionId === system.regionId) {
+      Display.starSystemShort(system);
+    }
   }
 }
 
@@ -31,9 +33,11 @@ function scanForPlanets(quantity = 1) {
   saveGame();
 }
 
-function listPlanets() {
+function listPlanetsInSystem() {
   for (let planet of GameState.planets) {
-    Display.planetShort(planet);
+    if (GameState.currentSystemId === planet.systemId) {
+      Display.planetShort(planet);
+    }
   }
 }
 
@@ -55,9 +59,9 @@ function setShipName(name) {
 const addLog = (logItem) => GameState.logs.push(logItem);
 const addMessage = (messageItem) => GameState.messages.push(messageItem);
 const addPlanet = (planet) => GameState.planets.push(planet);
-const addSystem = (system) => {
-  GameState.systems.push(system);
-};
+const addRegion = (region) => GameState.regions.push(region);
+const addSystem = (system) => GameState.systems.push(system);
+
 const getCrewNames = () => {
   const ScienceOfficer = GameState.crewMembers.science.name;
   const EngineeringOfficer = GameState.crewMembers.engineering.name;
@@ -79,14 +83,15 @@ export const Game = {
   addLog,
   addMessage,
   addPlanet,
+  addRegion,
   addSystem,
   getCrewNames,
   getLogById,
   getMessageById,
   getShipName,
   importSavedGame,
-  listPlanets,
-  listSystems,
+  listPlanetsInSystem,
+  listSystemsInRegion,
   newGame,
   saveGame,
   scanForPlanets,
