@@ -5,7 +5,7 @@ export const GameStateDefault = {
   logs: [],
   messages: [],
   planets: [],
-  regions: [],
+  regions: [{ id: 0, name: "LZ1" }],
   systems: [],
 
   currentSystemId: 0,
@@ -38,7 +38,7 @@ export const GameStateDefault = {
 export let GameState = { ...GameStateDefault };
 
 export const importSavedGame = (/** @type {GameStateType} */ savedGame) => {
-  console.log("iSG called");
+  console.log("savedGame:", savedGame);
   GameState = { ...savedGame };
 };
 export const newGame = () => {

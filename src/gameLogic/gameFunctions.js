@@ -46,8 +46,8 @@ function newGame() {
   Display.newGameMessage();
 }
 
-function importSavedGame() {
-  loadSavedGame();
+function importSavedGame(val) {
+  loadSavedGame(val);
   Display.loadedGameMessage();
 }
 

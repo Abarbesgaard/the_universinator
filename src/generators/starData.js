@@ -1,3 +1,4 @@
+import { GameState } from "../gameLogic/gameState";
 import { getRandomFrom, rollDie } from "../utilities";
 
 function color() {
@@ -13,81 +14,21 @@ function shape(color) {
 }
 
 /* cSpell:disable */
-function name() {
-  const starNames1 = [
-    "Leave",
-    "J72",
-    "YYGG",
-    "<<",
-    ">>",
-    "G76",
-    "Lat",
-    "Garb",
-    "//",
-    "Mek",
-    "*",
-    "Star",
-    "16/",
-    "Pen",
-    "Dont",
-    "Zenk",
-    "Tul",
-    "Tup",
-    "3xx3",
-    "(...)",
-  ];
-
-  const starNames2 = [
-    "152",
-    "-",
-    "756",
-    "XXXX",
-    "Ycct",
-    "H61",
-    "VVek",
-    "--",
-    "/",
-    "Tin",
-    "**",
-    "Broken",
-    "16/",
-    "Nope",
-    "go",
-    "Needed",
-    "Fish",
-    "Tu",
-    "5&7",
-    "###",
-  ];
-
-  const starNames3 = [
-    "BH",
-    "N53",
-    "156",
-    ">>",
-    "<<",
-    "B7132",
-    "Gish",
-    "--",
-    "/-",
-    "*",
-    "Flash",
-    "16.6",
-    "16/",
-    "Out",
-    "here",
-    "Now",
-    "Head",
-    "ilsh",
-    "(...)",
-    "&&",
-  ];
-
-  const name1 = getRandomFrom(starNames1);
-  const name2 = getRandomFrom(starNames2);
-  const name3 = getRandomFrom(starNames3);
-
-  return `${name1}${name2}${name3}`;
+function name(race) {
+  const { name: regionName } = GameState.regions[GameState.currentRegionId];
+  let duplicate = false;
+  let starName = "";
+  do {
+    starName = `${regionName}-${race}-${rollDie(20000)}`;
+    // Searches through the current list of systems to ensure we don't add a new system with the same name as a previous system (a 1:20000 chance, if not lower, but not impossible either)
+    duplicate = GameState.systems.reduce((found, star) => {
+      if (star.name === starName) {
+        found === true;
+      }
+      return found;
+    }, false);
+  } while (duplicate);
+  return starName;
 }
 
 function race() {
@@ -190,9 +131,11 @@ function signal() {
 /** @returns {Generator<StarSystem>} */
 function* starSystemGenerator() {
   let id = 0;
+  const regionId = GameState.currentRegionId;
   while (true) {
     let conflict = conflictType();
     let thisColor = color();
+    let thisRace = race();
     yield {
       id: id++,
       conflictDescription: conflictDescription(conflict),
@@ -200,10 +143,11 @@ function* starSystemGenerator() {
       color: thisColor,
       distance: rollDie(6),
       economy: economy(),
-      name: name(),
+      name: name(thisRace),
       newRegion: rollDie(6) >= 5,
       planets: [],
-      race: race(),
+      race: thisRace,
+      regionId,
       shape: shape(thisColor),
       signalDetected: signal(),
       signalExplored: false,
