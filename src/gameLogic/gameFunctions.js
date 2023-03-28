@@ -1,7 +1,7 @@
 import { makePlanet } from "../generators/planetData";
 import { makeStarSystem } from "../generators/starData";
 import { Display } from "../displays";
-import { GameState, importSavedGame, newGame as startNewGame } from "./gameState";
+import { GameState, importSavedGame as loadSavedGame, newGame as startNewGame } from "./gameState";
 import localforage from "localforage";
 
 function scanForSystems(quantity = 1) {
@@ -44,6 +44,11 @@ function listPlanetsInSystem() {
 function newGame() {
   startNewGame();
   Display.newGameMessage();
+}
+
+function importSavedGame() {
+  loadSavedGame();
+  Display.loadedGameMessage();
 }
 
 function saveGame() {

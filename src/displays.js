@@ -1,5 +1,10 @@
 import { Game } from "./gameLogic/gameFunctions";
 
+const loadedGameMessage = () => {
+  const message = () => `Saved game has been loaded.`;
+  displayThing(message, null);
+};
+
 const newGameMessage = () => {
   const message = () => `Hello! Hello? Do you read me?<br>
 ...<br>
@@ -74,6 +79,7 @@ export function displayThing(thing, items) {
 
 /** @type {DisplayThing} */
 export const Display = {
+  loadedGameMessage,
   newGameMessage,
   planet: (items) => displayThing(planet, items),
   planetShort: (items) => displayThing(planetShort, items),

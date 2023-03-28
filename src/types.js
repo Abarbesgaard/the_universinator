@@ -63,6 +63,7 @@
 
 /**
  * @typedef {Object} DisplayThing
+ * @property {() => void} loadedGameMessage
  * @property {() => void} newGameMessage
  * @property {(item: Planet) => void} planet
  * @property {(item: Planet) => void} planetShort
