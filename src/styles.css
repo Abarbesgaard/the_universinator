@@ -77,6 +77,8 @@ pre {
   border: 2px solid var(--light-green);
   box-shadow: var(--box-glow);
   padding: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .cmdline {
