@@ -17,4 +17,3 @@ you know what to do and you're familiar with the "controls"
 - Ticks
 - Multiple narratives
 - Selecting crew members to assist with probes
-- Change star system naming to use the region and race plus a random number
