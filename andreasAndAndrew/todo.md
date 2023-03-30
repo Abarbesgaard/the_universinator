@@ -17,3 +17,4 @@ you know what to do and you're familiar with the "controls"
 - Ticks
 - Multiple narratives
 - Selecting crew members to assist with probes
+- Make region names 'confirmable' so that users can provide their own names if desired

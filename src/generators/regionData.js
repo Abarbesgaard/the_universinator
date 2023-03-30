@@ -1,3 +1,5 @@
+import { GameState } from "../gameLogic/gameState";
+
 const name = (id) => {
   const regionNames = [
     "Temple of Apollo",
@@ -54,13 +56,14 @@ const name = (id) => {
   return regionNames[id] || `Uncharted Region ${id}`;
 };
 
-/** @returns {Generator<Region>} */
+/**
+ * @returns {Generator<Region>}
+ */
 function* regionGenerator() {
-  let id = 0;
   while (true) {
     yield {
-      id: id++,
-      name: name(id),
+      id: GameState.regions.length,
+      name: name(GameState.regions.length),
     };
   }
 }

@@ -1,3 +1,4 @@
+import { Game } from "../gameLogic/gameFunctions";
 import { GameState } from "../gameLogic/gameState";
 import { getRandomFrom, rollDie } from "../utilities";
 
@@ -14,12 +15,12 @@ function shape(color) {
 }
 
 /* cSpell:disable */
-function name(race) {
-  const { name: regionName } = GameState.regions[GameState.currentRegionId];
+function name(regionId, race) {
+  const { name: regionName } = GameState.regions[regionId];
   let duplicate = false;
   let starName = "";
   do {
-    starName = `${regionName}-${race}-${rollDie(20000)}`;
+    starName = `${regionName}-${race}-${rollDie(99999)}`;
     // Searches through the current list of systems to ensure we don't add a new system with the same name as a previous system (a 1:20000 chance, if not lower, but not impossible either)
     duplicate = GameState.systems.reduce((found, star) => {
       if (star.name === starName) {
@@ -131,11 +132,21 @@ function signal() {
 /** @returns {Generator<StarSystem>} */
 function* starSystemGenerator() {
   let id = 0;
-  const regionId = GameState.currentRegionId;
+
   while (true) {
     let conflict = conflictType();
     let thisColor = color();
     let thisRace = race();
+    const newRegion = rollDie(6) >= 5;
+    console.log("newRegion:", newRegion);
+    let regionId;
+
+    if (newRegion) {
+      regionId = Game.generateNewRegion().id;
+    } else {
+      regionId = GameState.currentRegionId;
+    }
+
     yield {
       id: id++,
       conflictDescription: conflictDescription(conflict),
@@ -143,8 +154,8 @@ function* starSystemGenerator() {
       color: thisColor,
       distance: rollDie(6),
       economy: economy(),
-      name: name(thisRace),
-      newRegion: rollDie(6) >= 5,
+      name: name(regionId, thisRace),
+      newRegion,
       planets: [],
       race: thisRace,
       regionId,

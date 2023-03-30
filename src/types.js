@@ -47,6 +47,7 @@
  * @property {(planet: Planet) => void} addPlanet
  * @property {(region: Region) => void} addRegion
  * @property {(system: StarSystem) => void} addSystem
+ * @property {() => Region} generateNewRegion
  * @property {() => object} getCrewNames
  * @property {(logId: number) => LoggedText | undefined} getLogById
  * @property {(messageId: number) => LoggedText | undefined} getMessageById

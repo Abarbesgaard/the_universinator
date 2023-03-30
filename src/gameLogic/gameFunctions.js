@@ -3,6 +3,14 @@ import { makeStarSystem } from "../generators/starData";
 import { Display } from "../displays";
 import { GameState, importSavedGame as loadSavedGame, newGame as startNewGame } from "./gameState";
 import localforage from "localforage";
+import { makeRegion } from "../generators/regionData";
+
+function generateNewRegion() {
+  const region = makeRegion.next().value;
+  addRegion(region);
+  GameState.currentRegionId = region.id;
+  return region;
+}
 
 function scanForSystems(quantity = 1) {
   do {
@@ -90,6 +98,7 @@ export const Game = {
   addPlanet,
   addRegion,
   addSystem,
+  generateNewRegion,
   getCrewNames,
   getLogById,
   getMessageById,

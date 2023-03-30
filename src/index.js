@@ -26,8 +26,7 @@ var terminal = new Terminal(
           localforage.clear();
         },
         help: () => {
-          return `Commands: clear, help,<br/>
-ScanSystem, ScanPlanet;<br/>
+          return `Commands: help, scansystem, scanplanet;<br/>
 capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
         },
         shipname: (name) => {
@@ -46,9 +45,7 @@ capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
           Game.listPlanetsInSystem();
         },
       };
-
-      commands[cmd](args);
-      return "";
+      return commands[cmd](args);
     },
   }
 );
