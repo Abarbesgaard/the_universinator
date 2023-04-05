@@ -13,8 +13,12 @@
  * @property {Array<Region>} regions
  * @property {Array<StarSystem>} systems
  *
+ * @property {string} playerName
+ *
+ * @property {object} currentProgress
  * @property {number} currentRegionId
  * @property {number} currentSystemId
+ * @property {number} currentTick
  *
  * @property {ShipInfo} shipInfo
  * @property {CrewMembersObject} crewMembers
@@ -48,9 +52,10 @@
  * @property {(region: Region) => void} addRegion
  * @property {(system: StarSystem) => void} addSystem
  * @property {() => Region} generateNewRegion
- * @property {() => object} getCrewNames
+ * @property {() => {[x: string]: CrewMember["name"]}} getCrewNames
  * @property {(logId: number) => LoggedText | undefined} getLogById
  * @property {(messageId: number) => LoggedText | undefined} getMessageById
+ * @property {() => string} getNextCommand
  * @property {() => string} getShipName
  * @property {(savedGame: GameStateType) => void} importSavedGame
  * @property {() => void} listPlanetsInSystem
@@ -59,12 +64,14 @@
  * @property {() => void} saveGame
  * @property {(quantity: number) => void} scanForPlanets
  * @property {(quantity: number) => void} scanForSystems
+ * @property {(name: string) => void} setPlayerName
  * @property {(name: string) => void} setShipName
  */
 
 /**
  * @typedef {Object} DisplayThing
  * @property {() => void} loadedGameMessage
+ * @property {(name: string) => void} nameEnteredMessage
  * @property {() => void} newGameMessage
  * @property {(item: Planet) => void} planet
  * @property {(item: Planet) => void} planetShort

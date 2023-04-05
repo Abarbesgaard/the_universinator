@@ -1,5 +1,36 @@
 import { ProbeType } from "./gameEnums";
 
+export const GameProgressState = {
+  newGame: {
+    nextCommand: "setName",
+  },
+  setName: {
+    nextCommand: "setShipName",
+  },
+  setShipName: {
+    nextCommand: "scansystem",
+  },
+};
+
+const crewMembers = {
+  science: {
+    name: "Sam",
+    bonusType: ProbeType.science,
+  },
+  tactical: {
+    name: "Tom",
+    bonusType: ProbeType.tactical,
+  },
+  engineering: {
+    name: "Eve",
+    bonusType: ProbeType.engineering,
+  },
+  medical: {
+    name: "Mab",
+    bonusType: ProbeType.medical,
+  },
+};
+
 /** @type {GameStateType} */
 export const GameStateDefault = {
   logs: [],
@@ -8,31 +39,18 @@ export const GameStateDefault = {
   regions: [{ id: 0, name: "LZ1" }],
   systems: [],
 
-  currentSystemId: 0,
+  playerName: "",
+
+  currentProgress: GameProgressState.newGame,
   currentRegionId: 0,
+  currentSystemId: 0,
+  currentTick: 0,
 
   shipInfo: {
     name: "",
     probeQuantity: Infinity,
   },
-  crewMembers: {
-    science: {
-      name: "Sam",
-      bonusType: ProbeType.science,
-    },
-    tactical: {
-      name: "Tom",
-      bonusType: ProbeType.tactical,
-    },
-    engineering: {
-      name: "Eve",
-      bonusType: ProbeType.engineering,
-    },
-    medical: {
-      name: "Mab",
-      bonusType: ProbeType.medical,
-    },
-  },
+  crewMembers,
 };
 
 export let GameState = { ...GameStateDefault };

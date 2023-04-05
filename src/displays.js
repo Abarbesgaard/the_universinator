@@ -8,23 +8,30 @@ const loadedGameMessage = () => {
 const newGameMessage = () => {
   const message = () => `Hello! Hello? Do you read me?<br>
 ...<br>
-My readings indicate you're receiving me but are not capable of responding yet. That's fine, I'll just trust you to listen for now.<br>
+If you're seeing this, would you please type your name in so I know what to call you?<br>
 ...<br>
-Welcome, captain, to IPASA, the InterPlanetary Aeronautics and Space Administration. By engaging this ship's SteelScan universal scanner, you have agreed to become our newest space explorer, the captain of your very own ship, charged with discovering the unexplored parts of your sector. Your cryogenically preserved crew should be coming out of their stasis sleep soon. But first, you should name your ship!<br>
+To the right of this display screen is a command prompt. Just type your name, if you don't mind, and then press the key labeled "return" on your keyboard. Or maybe it was labeled "enter", I don't remember what we decided to call it in your language.`;
+  displayThing(message, null);
+};
+
+const nameEnteredMessage = (name) => {
+  const message =
+    () => `Welcome, Captain ${name}, to IPASA, the InterPlanetary Aeronautics and Space Administration. By engaging this ship's SteelScan universal scanner, you have agreed to become our newest space explorer, the captain of your very own ship, charged with discovering the unexplored parts of your sector. Your cryogenically preserved crew should be coming out of their stasis sleep soon. But first, you should name your ship!<br>
 ...<br>
-To the right of this display screen is a command prompt. Type in the command "shipname" followed by the name you wish to give your ship, and then press the key labeled "return" on your keyboard. Or maybe it was labeled "enter", I don't remember what we decided to call it in your language.`;
+Please type in the name you wish to give your ship.`;
   displayThing(message, null);
 };
 
 const shipNameSaved = () => {
   const shipName = Game.getShipName();
-  const { ScienceOfficer, EngineeringOfficer, MedicalOfficer, TacticalOfficer } = Game.getCrewNames();
+  const { ScienceOfficer } = Game.getCrewNames();
   const message =
     () => `The Starship ${shipName}. OK... well... it's your ship and if you're fine with that name then I'm fine with it, too.<br>
 ...<br>
-Introduce Crew (or have them introduce themselves). Science: ${ScienceOfficer}, Engineering: ${EngineeringOfficer}, Medical: ${MedicalOfficer}, Tactical: ${TacticalOfficer}<br>
+Oh, looks like one of your crew is awake now. I'll leave it to them to get you setup and going from here. Good luck exploring the universe, captain!<br>
 ...<br>
-To scan your current star system, type "scansystem" into the command prompt.`;
+Hello, Captain. My name is ${ScienceOfficer}, and I am your Chief Science Officer. As the CSO, it is my job to help you interpret data received from probes. Probes are those little things we send out into star systems and down onto planets in order to determine what's there. Things like atmosphere, dominant race, geology, socioeconomic status, and so on. Since we're just starting out, how about we scan the system we're in right now?<br>
+To scan the current star system, type "scansystem" into the command prompt.`;
   displayThing(message, null);
 };
 
@@ -80,6 +87,7 @@ export function displayThing(thing, items) {
 /** @type {DisplayThing} */
 export const Display = {
   loadedGameMessage,
+  nameEnteredMessage,
   newGameMessage,
   planet: (items) => displayThing(planet, items),
   planetShort: (items) => displayThing(planetShort, items),

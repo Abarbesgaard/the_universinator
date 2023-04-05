@@ -59,7 +59,7 @@ pre {
   flex: 1 1;
   border: 2px solid var(--light-green);
   box-shadow: var(--box-glow);
-  font-size: 12px;
+  font-size: 0.5rem;
   padding: 16px;
   margin-bottom: 16px;
   text-align: center;

@@ -1,7 +1,7 @@
 import { makePlanet } from "../generators/planetData";
 import { makeStarSystem } from "../generators/starData";
 import { Display } from "../displays";
-import { GameState, importSavedGame as loadSavedGame, newGame as startNewGame } from "./gameState";
+import { GameProgressState, GameState, importSavedGame as loadSavedGame, newGame as startNewGame } from "./gameState";
 import localforage from "localforage";
 import { makeRegion } from "../generators/regionData";
 
@@ -63,6 +63,12 @@ function saveGame() {
   localforage.setItem("GameState", GameState);
 }
 
+function setPlayerName(name) {
+  GameState.playerName = name;
+  saveGame();
+  Display.nameEnteredMessage(name);
+}
+
 function setShipName(name) {
   GameState.shipInfo.name = name;
   saveGame();
@@ -87,6 +93,13 @@ const getCrewNames = () => {
     TacticalOfficer,
   };
 };
+
+const getNextCommand = () => {
+  const { nextCommand } = GameState.currentProgress;
+  GameState.currentProgress = GameProgressState[nextCommand];
+  return nextCommand;
+};
+
 const getLogById = (logId) => GameState.logs.find((log) => log.id === logId);
 const getMessageById = (messageId) => GameState.messages.find((message) => message.id === messageId);
 const getShipName = () => GameState.shipInfo.name;
@@ -102,6 +115,7 @@ export const Game = {
   getCrewNames,
   getLogById,
   getMessageById,
+  getNextCommand,
   getShipName,
   importSavedGame,
   listPlanetsInSystem,
@@ -110,5 +124,6 @@ export const Game = {
   saveGame,
   scanForPlanets,
   scanForSystems,
+  setPlayerName,
   setShipName,
 };

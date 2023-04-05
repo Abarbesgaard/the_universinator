@@ -17,8 +17,9 @@ var terminal = new Terminal(
   {},
   {
     execute: function (/** @type {string} */ cmd, /** @type {any} */ args) {
-      // Lowercase the command to reduce likelihood of typos
-      cmd = cmd.toLowerCase();
+      console.log("terminal");
+      console.log("start args:", args);
+      console.log("start cmd:", cmd);
 
       const commands = {
         clear: () => {
@@ -29,7 +30,10 @@ var terminal = new Terminal(
           return `Commands: help, scansystem, scanplanet;<br/>
 capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
         },
-        shipname: (name) => {
+        setname: (name) => {
+          Game.setPlayerName(name);
+        },
+        setshipname: (name) => {
           Game.setShipName(name);
         },
         scansystem: (quantity = 1) => {
@@ -45,6 +49,18 @@ capitalization doesn't matter, so "ScanSystem" and "scansystem" both work.`;
           Game.listPlanetsInSystem();
         },
       };
+
+      if (args.length === 0) {
+        if (cmd.toLowerCase() in commands) {
+          cmd = cmd.toLowerCase();
+        } else {
+          args = cmd;
+          cmd = Game.getNextCommand().toLowerCase();
+        }
+      }
+      console.log("end cmd:", cmd);
+      console.log("end args:", args);
+
       return commands[cmd](args);
     },
   }
