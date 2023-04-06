@@ -17,6 +17,7 @@ you know what to do and you're familiar with the "controls"
 - Ticks
 - Multiple narratives
 - Probes
+- display sysinfo
 - Selecting crew members to assist with probes
 - Make region names 'confirmable' so that users can provide their own names if desired
 - Improve saved game loading so it 'picks back up' where you left off, if in the middle of something like the intro sequence
