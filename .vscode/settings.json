@@ -2,7 +2,9 @@
   "cSpell.words": [
     "Beel",
     "cmdline",
+    "DASS",
     "Flitz",
+    "freeplay",
     "Gjallarhorn",
     "IPASA",
     "Jötunheim",
@@ -14,10 +16,14 @@
     "Morrigan",
     "newplanet",
     "newsystem",
+    "planetinfo",
     "scanplanet",
     "scansystem",
+    "setname",
+    "setshipname",
     "shipname",
     "Slidr",
+    "sysinfo",
     "Universinator"
   ]
 }

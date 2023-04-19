@@ -55,7 +55,7 @@
  * @property {() => {[x: string]: CrewMember["name"]}} getCrewNames
  * @property {(logId: number) => LoggedText | undefined} getLogById
  * @property {(messageId: number) => LoggedText | undefined} getMessageById
- * @property {() => string} getNextCommand
+ * @property {() => string | null} getNextCommand
  * @property {() => string} getShipName
  * @property {(savedGame: GameStateType) => void} importSavedGame
  * @property {() => void} listPlanetsInSystem
@@ -78,6 +78,7 @@
  * @property {() => void} shipNameSaved
  * @property {(item: StarSystem) => void} starSystem
  * @property {(item: StarSystem) => void} starSystemShort
+ * @property {() => void} systemScanned
  */
 
 /**

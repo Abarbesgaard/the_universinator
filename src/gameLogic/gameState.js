@@ -1,14 +1,17 @@
 import { ProbeType } from "./gameEnums";
 
 export const GameProgressState = {
-  newGame: {
-    nextCommand: "setName",
+  newgame: {
+    nextCommand: "setname",
   },
-  setName: {
-    nextCommand: "setShipName",
+  setname: {
+    nextCommand: "setshipname",
   },
-  setShipName: {
+  setshipname: {
     nextCommand: "scansystem",
+  },
+  scansystem: {
+    nextCommand: null,
   },
 };
 
@@ -41,7 +44,7 @@ export const GameStateDefault = {
 
   playerName: "",
 
-  currentProgress: GameProgressState.newGame,
+  currentProgress: GameProgressState.newgame,
   currentRegionId: 0,
   currentSystemId: 0,
   currentTick: 0,

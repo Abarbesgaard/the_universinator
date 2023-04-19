@@ -1,6 +1,6 @@
 import { makePlanet } from "../generators/planetData";
 import { makeStarSystem } from "../generators/starData";
-import { Display } from "../displays";
+import { Display } from "../displays/displays";
 import { GameProgressState, GameState, importSavedGame as loadSavedGame, newGame as startNewGame } from "./gameState";
 import localforage from "localforage";
 import { makeRegion } from "../generators/regionData";
@@ -20,6 +20,9 @@ function scanForSystems(quantity = 1) {
     addSystem(data);
     Display.starSystem(data);
   } while (quantity > 0);
+  if (GameState.currentProgress === GameProgressState.scanSystem) {
+    Display.systemScanned();
+  }
   saveGame();
 }
 
@@ -95,6 +98,7 @@ const getCrewNames = () => {
 };
 
 const getNextCommand = () => {
+  console.log("getNextCommand gamestate:", GameState);
   const { nextCommand } = GameState.currentProgress;
   GameState.currentProgress = GameProgressState[nextCommand];
   return nextCommand;
