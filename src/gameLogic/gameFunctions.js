@@ -8,8 +8,7 @@ import { makeRegion } from "../generators/regionData";
 function generateNewRegion() {
   const region = makeRegion.next().value;
   addRegion(region);
-  GameState.currentRegionId = region.id;
-  return region;
+  Display.region(region);
 }
 
 function scanForSystems(quantity = 1) {
@@ -20,9 +19,6 @@ function scanForSystems(quantity = 1) {
     addSystem(data);
     Display.starSystem(data);
   } while (quantity > 0);
-  if (GameState.currentProgress === GameProgressState.scanSystem) {
-    Display.systemScanned();
-  }
   saveGame();
 }
 

@@ -51,7 +51,7 @@
  * @property {(planet: Planet) => void} addPlanet
  * @property {(region: Region) => void} addRegion
  * @property {(system: StarSystem) => void} addSystem
- * @property {() => Region} generateNewRegion
+ * @property {() => void} generateNewRegion
  * @property {() => {[x: string]: CrewMember["name"]}} getCrewNames
  * @property {(logId: number) => LoggedText | undefined} getLogById
  * @property {(messageId: number) => LoggedText | undefined} getMessageById
@@ -75,6 +75,7 @@
  * @property {() => void} newGameMessage
  * @property {(item: Planet) => void} planet
  * @property {(item: Planet) => void} planetShort
+ * @property {(item: Region) => void} region
  * @property {() => void} shipNameSaved
  * @property {(item: StarSystem) => void} starSystem
  * @property {(item: StarSystem) => void} starSystemShort

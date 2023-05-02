@@ -41,6 +41,10 @@ Dominant Geology: ${geology}`;
 /** @param {Planet} arg0 */
 const planetShort = ({ id, name }) => `Planet #${id}: ${name}.`;
 
+/** @param {Region} arg0 */
+const region = ({ name }) => `
+Region Name: ${name}`;
+
 /**
  * @param {Function} thing
  * @param {Object} items
@@ -60,6 +64,7 @@ export const Display = {
   ...introMessages,
   planet: (items) => displayThing(planet, items),
   planetShort: (items) => displayThing(planetShort, items),
+  region: (item) => displayThing(region, item),
   starSystem: (item) => displayThing(starSystem, item),
   starSystemShort: (item) => displayThing(starSystemShort, item),
 };

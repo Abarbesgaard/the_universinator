@@ -138,14 +138,7 @@ function* starSystemGenerator() {
     let thisColor = color();
     let thisRace = race();
     const newRegion = rollDie(6) >= 5;
-    console.log("newRegion:", newRegion);
-    let regionId;
-
-    if (newRegion) {
-      regionId = Game.generateNewRegion().id;
-    } else {
-      regionId = GameState.currentRegionId;
-    }
+    const regionId = GameState.currentRegionId;
 
     yield {
       id: id++,
